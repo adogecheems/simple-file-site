@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "simple-file-site",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "A simple file list site generator",
   "main": "index.js",
   "repository": {
