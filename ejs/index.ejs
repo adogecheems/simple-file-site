@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index of <%= dir %>
+    </title>
+    <%- config.customHead.content %>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0 0 20px;
+            padding: 20px;
+            font-size: 2rem;
+            background-color: #ff98a9;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            margin: 20px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            list-style: none;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        li:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        li span:first-child {
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        a {
+            flex-grow: 1;
+            text-decoration: none;
+            color: #ff98a9;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ff6f85;
+        }
+
+        span:last-child {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            font-size: 0.9rem;
+            background-color: #ff98a9;
+            color: #fff;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #fff;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Index of <%= dir %>
+    </h1>
+    <main>
+        <ul>
+            <% objs.forEach(obj=> { %>
+                <li>
+                    <span>
+                        <%= obj.icon %>
+                    </span>
+                    <a href="<%= obj.name %>" <%=obj.isDirectory ? '' : 'download' %>><%= obj.name %></a>
+                    <span>
+                        <%= obj.size %>
+                    </span>
+                </li>
+                <% }) %>
+        </ul>
+    </main>
+    <footer>
+        <a href="<%= config.footerLink.url %>">
+            <%= config.footerLink.text %>
+        </a>
+    </footer>
+</body>
+
+</html>
