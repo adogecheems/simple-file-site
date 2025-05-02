@@ -1,6 +1,6 @@
-# Simple File List
+# Simple File Site
 
-如你所见，**Simple File List** 是一个非常简单的静态站点生成器，旨在快速生成文件列表站点，并部署到类似vercel的静态网页托管服务。
+如你所见，**Simple File Site** 是一个非常简单的静态站点生成器，旨在快速生成文件列表站点，并部署到类似Vercel的静态网页托管服务。
 
 ## 功能
 
@@ -8,15 +8,17 @@
 - 支持自定义模板（基于 EJS）
 - 轻量级，易于使用
 
-## 安装
+## 安装与使用
 
 确保您已安装 [Node.js](https://nodejs.org/) 和 npm。
+
+### 手动安装与使用
 
 1. 克隆项目：
 
    ```bash
-   git clone https://github.com/adogecheems/simple-list.git
-   cd simple-list
+   git clone https://github.com/adogecheems/simple-file-site.git
+   cd simple-file-site
    ```
 
 2. 安装依赖：
@@ -25,39 +27,25 @@
    npm install
    ```
 
-## 使用
-
-### 本地运行
-
-1. 默认生成文件列表：
-
-   ```bash
-   node index.js
-   ```
-   - 默认源目录为 `source`，目标目录为 `public`。
-
-2. 指定源目录和目标目录：
+3. 运行：
 
    ```bash
    node index.js <source_directory> <target_directory>
    ```
-   - 例如：
-     ```bash
-     node index.js my-source my-public
-     ```
+   - 如果未指定参数，默认源目录为 `source`，目标目录为 `public`。
 
-### 全局命令
+### 通过 npm 安装使用
 
-1. 发布到 npm 后，您可以全局安装：
+1.安装命令：
 
    ```bash
-   npm install -g simple-list
+   npm install -g simple-file-site
    ```
 
-2. 使用全局命令生成文件列表：
+2.运行：
 
    ```bash
-   simple-list <source_directory> <target_directory>
+   simple-file-site <source_directory> <target_directory>
    ```
    - 如果未指定参数，默认源目录为 `source`，目标目录为 `public`。
 

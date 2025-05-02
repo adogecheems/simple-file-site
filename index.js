@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import fs from "fs-extra";
 import ejs from "ejs";
 import path from "path";
@@ -15,7 +17,7 @@ const config = {
     },
     footerLink: {
         text: "GitHub",
-        url: "https://github.com/adogecheems/cdn",
+        url: "https://github.com/adogecheems/simple-file-site",
     },
 };
 
@@ -34,7 +36,7 @@ async function generateHtml(dir) {
         }
 
         for (const entry of entries) {
-            const entryPath = `${dir}/${entry}`;
+            const entryPath = path.join(dir, entry);
             const stats = await fs.stat(entryPath);
             const isDirectory = stats.isDirectory();
             const size = isDirectory ? "-" : `${(stats.size / 1024).toFixed(2)} KB`;
@@ -50,10 +52,10 @@ async function generateHtml(dir) {
         }
 
         const objs = [...folders, ...files];
-        const template = await fs.readFile("ejs/index.ejs", "utf-8");
+        const template = await fs.readFile(path.join("ejs", "index.ejs"), "utf-8");
         const content = ejs.render(template, { objs, dir, config });
 
-        await fs.writeFile(`${dir}/index.html`, content);
+        await fs.writeFile(path.join(dir, "index.html"), content);
         console.log(`Generated index HTML for ${dir}`);
     } catch (err) {
         console.error(`Error generating index HTML for ${dir}:`, err);
@@ -65,7 +67,7 @@ async function processDir(dir) {
         const entries = await fs.readdir(dir);
 
         for (const entry of entries) {
-            const entryPath = `${dir}/${entry}`;
+            const entryPath = path.join(dir, entry);
             const stats = await fs.stat(entryPath);
 
             if (stats.isDirectory()) {

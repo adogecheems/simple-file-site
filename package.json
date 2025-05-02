@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "simple-file-site",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A simple file list site generator",
   "main": "index.js",
   "repository": {
@@ -27,6 +27,6 @@
     "fs-extra": "^11.3.0"
   },
   "bin": {
-    "simple-file-list": "index.js"
+    "simple-file-site": "index.js"
   }
 }
