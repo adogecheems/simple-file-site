@@ -2,11 +2,11 @@
 
 如你所见，**Simple File Site** 是一个非常简单的静态站点生成器，旨在快速生成文件列表站点，并部署到类似Vercel的静态网页托管服务。
 
-## 功能
+## 特性
 
 - 自动生成文件列表页面
-- 支持自定义模板（基于 EJS）
 - 轻量级，易于使用
+- 支持多种静态站点托管服务（如 Vercel、Netlify 等）
 
 ## 安装与使用
 
@@ -39,13 +39,13 @@
 1.安装命令：
 
    ```bash
-   npm install -g simple-file-site
+   npm install  simple-file-site --save
    ```
 
 2.运行：
 
    ```bash
-   simple-file-site <source_directory> <target_directory>
+   npx simple-file-site <source_directory> <target_directory>
    ```
    - 如果未指定参数，默认源目录为 `source`，目标目录为 `public`。
 
