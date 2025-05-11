@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "simple-file-site",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple file list site generator",
   "main": "index.js",
   "repository": {
@@ -16,8 +16,7 @@
     "site",
     "generator",
     "static-site",
-    "static-site-generator",
-    "simple-list"
+    "static-site-generator"
   ],
   "author": "adogecheems",
   "license": "GPL-3.0-only",
