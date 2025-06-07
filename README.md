@@ -4,9 +4,8 @@
 
 ## 特性
 
-- 自动生成文件列表页面
+- 提供一个文件列表web页面
 - 轻量级，易于使用
-- 支持多种静态站点托管服务（如 Vercel、Netlify 等）
 
 ## 安装与使用
 
@@ -32,6 +31,7 @@
    ```bash
    node index.js <source_directory> <target_directory>
    ```
+
    - 如果未指定参数，默认源目录为 `source`，目标目录为 `public`。
 
 ### 通过 npm 安装使用
@@ -47,10 +47,12 @@
    ```bash
    npx simple-file-site <source_directory> <target_directory>
    ```
-   - 如果未指定参数，默认源目录为 `source`，目标目录为 `public`。
+
+- 如果未指定参数，默认源目录为 `source`，目标目录为 `public`。
 
 ## 关于跨域资源限制
-静态站点托管服务（如 Vercel）可能会限制跨域资源访问。本项目已经内置了netlify.toml与vercel.json配置文件，添加了cors标头（使用npm安装的项目需手动往您的存储库根目录复制）。但如果您使用了其他的静态站点托管服务，您可能需要设法添加标头。项目根目录中有一个_headers文件，您可以将其复制到source/中进行生成，可能对一些其他平台有帮助（测试cloudflare pages可用）。
+
+静态站点托管服务（如 Vercel）可能会限制跨域资源访问。本项目已经内置了netlify.toml、vercel.json与_headers文件配置文件，添加了cors标头。但如果您使用了其他的静态站点托管服务，您可能需要设法添加标头。
 
 ## 依赖
 
