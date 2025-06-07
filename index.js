@@ -20,6 +20,21 @@ class FileIndexGenerator {
         return `${(size / (1024 * 1024 * 1024)).toFixed(2)} GB`;
     }
 
+    static async processEntry(entryPath, entry) {
+        const stats = await fs.stat(entryPath);
+        const isDirectory = stats.isDirectory();
+
+        const size = isDirectory ? "-" : FileIndexGenerator.getFileSize(stats.size);
+        const icon = FileIndexGenerator.getFileIcon(entry, isDirectory);
+
+        return {
+            name: entry,
+            icon,
+            size,
+            isDirectory,
+        };
+    }
+
     constructor(fromDir = "source", toDir = "public") {
         this.fromDir = fromDir;
         this.toDir = toDir;
@@ -42,21 +57,6 @@ class FileIndexGenerator {
         }
     }
 
-    async processEntry(entryPath, entry) {
-        const stats = await fs.stat(entryPath);
-        const isDirectory = stats.isDirectory();
-
-        const size = isDirectory ? "-" : FileIndexGenerator.getFileSize(stats.size);
-        const icon = FileIndexGenerator.getFileIcon(entry, isDirectory);
-
-        return {
-            name: entry,
-            icon,
-            size,
-            isDirectory,
-        };
-    }
-
     async generateHtml(dir) {
         try {
             const entries = await fs.readdir(dir);
@@ -73,7 +73,7 @@ class FileIndexGenerator {
 
             for (const entry of entries) {
                 const entryPath = path.resolve(dir, entry);
-                const item = await this.processEntry(entryPath, entry);
+                const item = await FileIndexGenerator.processEntry(entryPath, entry);
                 items[item.isDirectory ? "folders" : "files"].push(item);
             }
 
@@ -97,7 +97,7 @@ class FileIndexGenerator {
 
             await Promise.all(
                 entries.map(async (entry) => {
-                    const entryPath = path.resolve(dir, entry);
+                    const entryPath = path.join(dir, entry);
                     const stats = await fs.stat(entryPath);
                     if (stats.isDirectory()) {
                         await this.processDir(entryPath);
